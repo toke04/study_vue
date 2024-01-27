@@ -1,14 +1,18 @@
 <script setup lang="ts">
 import HelloWorld from './components/HelloWorld.vue'
 import TestComp from './components/TestComp.vue'
+import TopPage from "./pages/TopPage.vue";
+
 
 </script>
 
 <template>
     <div>
+        <TopPage/>
         <HelloWorld msg="Vite + Vue" />
         <p>----</p>
         <TestComp></TestComp>
+
     </div>
 </template>
 
