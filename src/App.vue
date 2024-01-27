@@ -1,21 +1,27 @@
 <script setup>
 import {ref,watch,computed,reactive} from "vue";
 const serachWord = ref("")
+const prefix = ref("")
 const names = reactive(
   ["tanaka kouhei",
    "yamaguchi mituo",
    "nakata yasu"
   ])
+const filteredNames = computed(() =>
+  names.filter((name) =>
+    name.toLocaleLowerCase().startsWith(prefix.value.toLocaleLowerCase())
+  )
+)
 </script>
 
 <template>
     <div>
         <div class="parent">
           <div>
-            <input v-model="serachWord">
+            <input v-model="prefix">
               <div>
                 <select size="5">
-                  <option v-for="name in names">
+                  <option v-for="name in filteredNames" :key="name">
                       {{ name }}
                   </option>
                 </select>
