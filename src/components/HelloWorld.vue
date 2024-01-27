@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 defineProps<{ msg: string }>()
-let count = ref(0)
+const count = ref(0)
 
 const increCount = () => {
   if (count.value < 7){
