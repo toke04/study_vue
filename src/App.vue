@@ -1,29 +1,46 @@
-<script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import TestComp from './components/TestComp.vue'
-import TopPage from "./pages/TopPage.vue";
+<script setup>
+import {ref,watch,computed,reactive} from "vue";
+const serachWord = ref("")
+const names = reactive(
+  ["tanaka kouhei",
+   "yamaguchi mituo",
+   "nakata yasu"
+  ])
 </script>
 
 <template>
     <div>
-        <TopPage/>
-        <HelloWorld msg="Vite + Vue" />
-        <p>----</p>
-        <TestComp></TestComp>
+        <div class="parent">
+          <div>
+            <input v-model="serachWord">
+              <div>
+                <select size="5">
+                  <option v-for="name in names">
+                      {{ name }}
+                  </option>
+                </select>
+              </div>
+          </div>
+          <div class="child2">
+              <div>
+                  <p> <label>名前<input></label></p>
+                  <p> <label>苗字<input></label></p>
+              </div>
+          </div>
+        </div>
+        <div>
+            <button>作成</button>
+            <button>更新</button>
+            <button>削除</button>
+        </div>
     </div>
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+<style>
+.parent{
+    display: flex;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+.child2{
+    margin-left: 20px;
 }
 </style>
